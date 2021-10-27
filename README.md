@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an example app to show how to run Rails a Rails 6.1 application on docker, as described in [this post]()
 
-Things you may want to cover:
+## Prerequisites
+* Docker Engine
 
-* Ruby version
+## Steps to get the application Running
 
-* System dependencies
+Clone this Repository
 
-* Configuration
+Build the image. Inside the application's directory, run:
 
-* Database creation
+`docker build -t coolrequest/rails_docker_demo .`
 
-* Database initialization
+Start the Application using Docker Compose:
 
-* How to run the test suite
+`docker compose up`
 
-* Services (job queues, cache servers, search engines, etc.)
+## More information
 
-* Deployment instructions
-
-* ...
+For more information, please look at the corresponding [article]()
