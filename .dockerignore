@@ -1,0 +1,11 @@
+.git*
+log/*
+tmp/*
+node_modules/*
+storage/*
+Dockerfile
+README
+.env*
+docker-compose*
+helm/*
+db/pgdata/*
