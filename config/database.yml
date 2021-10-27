@@ -1,5 +1,5 @@
 default: &default
-  adapter: postgresql
+  adapter: <%= ENV["DB_ADAPTER"] || 'postgresql') %>
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS", 20) %>
   database: <%= ENV["DB_DATABASE"] %>
