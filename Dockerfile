@@ -18,12 +18,6 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y --no-install-recommends nodejs && \
     rm -rf /var/lib/apt/lists/*
 
-# install yarn
-# RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-#     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-#     apt-get update && \
-#     apt-get install -y --no-install-recommends yarn && \
-#     rm -rf /var/lib/apt/lists/*
 RUN npm install --global yarn
 
 RUN gem install bundler
@@ -32,16 +26,21 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
+COPY Gemfile .
+COPY Gemfile.lock .
+RUN bundle
+
+COPY package.json .
+COPY yarn.lock .
+RUN yarn
+
 RUN mkdir -p /app
 WORKDIR /app
 COPY . /app
 
-RUN bundle config set --local deployment 'true'
-RUN bundle config set --local without 'development test'
-RUN bundle install -j5
-
-RUN yarn
-
 RUN bundle exec rake assets:precompile DB_ADAPTER=nulldb NODE_ENV=development RAILS_ENV=staging SECRET_KEY_BASE=123
 
-# docker build -t coolrequest/docker_app .
+EXPOSE 3000
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+
+# docker build -t coolrequest/rails_docker_demo .
