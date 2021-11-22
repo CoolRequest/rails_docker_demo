@@ -16,7 +16,3 @@ Build the image. Inside the application's directory, run:
 Start the Application using Docker Compose:
 
 `docker compose up`
-
-## More information
-
-For more information, please look at the corresponding [article]()
