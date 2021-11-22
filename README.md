@@ -1,6 +1,6 @@
 # README
 
-This is an example app to show how to run Rails a Rails 6.1 application on docker, as described in [this post]()
+This is an example app to show how to run Rails a Rails 6.1 application on docker, as described in [this post](https://coolrequest.dev/2021/11/03/docker_image_rails_part1.html)
 
 ## Prerequisites
 * Docker Engine
