@@ -1,16 +1,4 @@
-FROM ruby:2.7.4-slim
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-              ca-certificates \
-		      curl \
-              git \
-              openssh-client \
-              build-essential \
-              libc6 \
-              gnupg \
-              shared-mime-info && \
-    rm -rf /var/lib/apt/lists/*
+FROM ruby:2.7.4
 
 # install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
